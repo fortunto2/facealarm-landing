@@ -85,6 +85,12 @@ const translations = {
         content:
           "Мы можем время от времени обновлять эту Политику конфиденциальности. Любые изменения будут опубликованы на этой странице с обновленной датой редакции.",
       },
+      operator: {
+        title: "Оператор приложения",
+        content: "FaceAlarm разработан и поддерживается:",
+        names: "Алина Салаватова и Рустам Салаватов",
+        email: "Email: info@superduperai.co",
+      },
       contact: {
         title: "Свяжитесь с нами",
         content: "Если у вас есть вопросы по этой Политике конфиденциальности:",
@@ -169,6 +175,12 @@ const translations = {
         title: "Policy Changes",
         content:
           "We may update this Privacy Policy periodically. Any changes will be posted here with an updated revision date.",
+      },
+      operator: {
+        title: "App Operator",
+        content: "FaceAlarm is developed and maintained by:",
+        names: "Alina Salavatova and Rustam Salavatov",
+        email: "Email: info@superduperai.co",
       },
       contact: {
         title: "Contact Us",
@@ -255,6 +267,12 @@ const translations = {
         title: "Politika Değişiklikleri",
         content:
           "Bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Herhangi bir değişiklik, güncellenmiş bir revizyon tarihi ile burada yayınlanacaktır.",
+      },
+      operator: {
+        title: "Uygulama Operatörü",
+        content: "FaceAlarm şu kişiler tarafından geliştirilmiş ve sürdürülmektedir:",
+        names: "Alina Salavatova ve Rustam Salavatov",
+        email: "E-posta: info@superduperai.co",
       },
       contact: {
         title: "Bize Ulaşın",
@@ -431,6 +449,14 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-3xl font-bold mb-4">{t.sections.changes.title}</h2>
               <p className="text-muted-foreground leading-relaxed">{t.sections.changes.content}</p>
+            </section>
+
+            {/* App Operator */}
+            <section>
+              <h2 className="text-3xl font-bold mb-4">{t.sections.operator.title}</h2>
+              <p className="text-muted-foreground leading-relaxed mb-2">{t.sections.operator.content}</p>
+              <p className="font-bold mb-2">{t.sections.operator.names}</p>
+              <p className="text-muted-foreground">{t.sections.operator.email}</p>
             </section>
 
             {/* Contact Us */}
