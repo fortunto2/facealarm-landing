@@ -352,6 +352,18 @@ export default function PrivacyPolicyPage() {
               </ul>
             </section>
 
+            {/* Face Detection and Face Data */}
+            <section>
+              <h2 className="text-3xl font-bold mb-4">{t.sections.faceDetection.title}</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.faceDetection.content}</p>
+              <p className="text-xl font-bold mb-4">{t.sections.faceDetection.subtitle}</p>
+              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                {t.sections.faceDetection.list.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
             {/* Photos and Storage */}
             <section>
               <h2 className="text-3xl font-bold mb-4">{t.sections.photos.title}</h2>
