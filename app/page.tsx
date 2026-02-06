@@ -21,7 +21,7 @@ const translations = {
       downloadFree: "Скачать бесплатно",
       watchDemo: "Посмотреть демо",
       googlePlay: "Доступно в Google Play",
-      appStore: "Скоро в App Store",
+      appStore: "Загрузить в App Store",
     },
     photoTips: {
       title: "Советы по фотографированию",
@@ -117,7 +117,7 @@ const translations = {
       description: "Присоединяйтесь к раннему запуску. AI-функции и платная версия появятся позже.",
       download: "Скачать FaceAlarm",
       googlePlay: "Доступно в Google Play",
-      appStore: "Скоро в App Store",
+      appStore: "Загрузить в App Store",
     },
     footer: {
       privacy: "Политика конфиденциальности",
@@ -139,7 +139,7 @@ const translations = {
       downloadFree: "Download Free",
       watchDemo: "Watch Demo",
       googlePlay: "Get it on Google Play",
-      appStore: "Coming soon to App Store",
+      appStore: "Download on the App Store",
     },
     photoTips: {
       title: "Photo Tips",
@@ -230,7 +230,7 @@ const translations = {
       description: "Join the early launch. AI features and paid version coming later.",
       download: "Download FaceAlarm",
       googlePlay: "Get it on Google Play",
-      appStore: "Coming soon to App Store",
+      appStore: "Download on the App Store",
     },
     footer: {
       privacy: "Privacy Policy",
@@ -252,7 +252,7 @@ const translations = {
       downloadFree: "Ücretsiz İndir",
       watchDemo: "Demo İzle",
       googlePlay: "Google Play'de edinin",
-      appStore: "App Store'da yakında",
+      appStore: "App Store'dan indirin",
     },
     photoTips: {
       title: "Fotoğraf İpuçları",
@@ -343,7 +343,7 @@ const translations = {
       description: "Erken lansmanına katılın. AI özellikleri ve ücretli sürüm daha sonra gelecek.",
       download: "FaceAlarm İndir",
       googlePlay: "Google Play'de edinin",
-      appStore: "App Store'da yakında",
+      appStore: "App Store'dan indirin",
     },
     footer: {
       privacy: "Gizlilik Politikası",
@@ -467,19 +467,19 @@ export default function LandingPage() {
                   className="h-[60px] w-auto"
                 />
               </a>
-              <div className="relative">
+              <a
+                href="https://apps.apple.com/app/id6758454962"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-105"
+              >
                 <img
                   src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                   alt={t.hero.appStore}
                   height="80"
-                  className="h-[60px] w-auto opacity-50 grayscale"
+                  className="h-[60px] w-auto"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-xs font-bold">
-                    {lang === "ru" ? "Скоро" : lang === "tr" ? "Yakında" : "Coming Soon"}
-                  </span>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -702,19 +702,19 @@ export default function LandingPage() {
                 className="h-[70px] w-auto"
               />
             </a>
-            <div className="relative">
+            <a
+              href="https://apps.apple.com/app/id6758454962"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+            >
               <img
                 src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                 alt={t.cta.appStore}
                 height="80"
-                className="h-[70px] w-auto opacity-50 grayscale"
+                className="h-[70px] w-auto"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="bg-muted text-muted-foreground px-4 py-2 rounded-full text-sm font-bold">
-                  {lang === "ru" ? "Скоро" : lang === "tr" ? "Yakında" : "Coming Soon"}
-                </span>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
