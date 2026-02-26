@@ -1,10 +1,4 @@
-"use client"
-
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-
-type Language = "ru" | "en" | "tr"
+import type { Locale } from "./config"
 
 const translations = {
   ru: {
@@ -30,7 +24,8 @@ const translations = {
       },
       faceDetection: {
         title: "Распознавание лиц и данные о лице",
-        content: "FaceAlarm использует фреймворк Apple Vision для определения наличия лица в видоискателе камеры. Это необходимо для проверки того, что пользователь сделал правильное селфи, прежде чем будильник можно будет отключить.",
+        content:
+          "FaceAlarm использует фреймворк Apple Vision для определения наличия лица в видоискателе камеры. Это необходимо для проверки того, что пользователь сделал правильное селфи, прежде чем будильник можно будет отключить.",
         subtitle: "Как работает распознавание лиц:",
         list: [
           "Приложение определяет только наличие и положение лица в кадре камеры (ограничивающий прямоугольник)",
@@ -60,6 +55,8 @@ const translations = {
           { permission: "Галерея", purpose: "Для сохранения и отображения ваших селфи" },
           { permission: "Уведомления", purpose: "Для срабатывания будильника" },
         ],
+        permissionHeader: "Разрешение",
+        purposeHeader: "Цель",
         footer:
           "Эти разрешения используются исключительно для основного функционала приложения и никогда не используются для сбора данных.",
       },
@@ -122,7 +119,8 @@ const translations = {
       },
       faceDetection: {
         title: "Face Detection and Face Data",
-        content: "FaceAlarm uses Apple's Vision framework to detect whether a face is present in the camera viewfinder. This is required to verify that the user has taken a proper selfie before the alarm can be dismissed.",
+        content:
+          "FaceAlarm uses Apple's Vision framework to detect whether a face is present in the camera viewfinder. This is required to verify that the user has taken a proper selfie before the alarm can be dismissed.",
         subtitle: "How face detection works:",
         list: [
           "The app detects only the presence and position of a face in the camera frame (bounding box)",
@@ -152,7 +150,10 @@ const translations = {
           { permission: "Photo Library", purpose: "To save and display your selfies" },
           { permission: "Notifications", purpose: "To deliver alarm alerts" },
         ],
-        footer: "These permissions serve only the app's core functionality and are never used for data collection.",
+        permissionHeader: "Permission",
+        purposeHeader: "Purpose",
+        footer:
+          "These permissions serve only the app's core functionality and are never used for data collection.",
       },
       thirdParty: {
         title: "Third-Party Services",
@@ -213,7 +214,8 @@ const translations = {
       },
       faceDetection: {
         title: "Yüz Algılama ve Yüz Verileri",
-        content: "FaceAlarm, kamera vizöründe bir yüzün bulunup bulunmadığını tespit etmek için Apple'ın Vision çerçevesini kullanır. Bu, alarm kapatılmadan önce kullanıcının düzgün bir selfie çektiğini doğrulamak için gereklidir.",
+        content:
+          "FaceAlarm, kamera vizöründe bir yüzün bulunup bulunmadığını tespit etmek için Apple'ın Vision çerçevesini kullanır. Bu, alarm kapatılmadan önce kullanıcının düzgün bir selfie çektiğini doğrulamak için gereklidir.",
         subtitle: "Yüz algılama nasıl çalışır:",
         list: [
           "Uygulama yalnızca kamera karesinde bir yüzün varlığını ve konumunu algılar (sınırlayıcı kutu)",
@@ -243,6 +245,8 @@ const translations = {
           { permission: "Fotoğraf Kütüphanesi", purpose: "Selfie'lerinizi kaydetmek ve görüntülemek için" },
           { permission: "Bildirimler", purpose: "Alarm uyarılarını iletmek için" },
         ],
+        permissionHeader: "İzin",
+        purposeHeader: "Amaç",
         footer:
           "Bu izinler yalnızca uygulamanın temel işlevselliği için kullanılır ve asla veri toplama için kullanılmaz.",
       },
@@ -282,197 +286,8 @@ const translations = {
     },
     backToHome: "Ana Sayfaya Dön",
   },
-}
+} as const
 
-export default function PrivacyPolicyPage() {
-  const [lang, setLang] = useState<Language>("ru")
-
-  useEffect(() => {
-    // Detect browser language
-    const browserLang = navigator.language.toLowerCase()
-    if (browserLang.startsWith("en")) {
-      setLang("en")
-    } else if (browserLang.startsWith("tr")) {
-      setLang("tr")
-    } else {
-      setLang("ru")
-    }
-  }, [])
-
-  const t = translations[lang]
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border/40 backdrop-blur-sm fixed top-0 w-full z-50 bg-background/80">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/images/facealarm-logo.png" alt="FaceAlarm" width={32} height={32} className="rounded-lg" />
-            <span className="font-bold text-xl">FaceAlarm</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-2">
-              <button
-                onClick={() => setLang("ru")}
-                className={`px-3 py-1 rounded-md text-sm font-bold transition-colors ${
-                  lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                RU
-              </button>
-              <button
-                onClick={() => setLang("en")}
-                className={`px-3 py-1 rounded-md text-sm font-bold transition-colors ${
-                  lang === "en" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLang("tr")}
-                className={`px-3 py-1 rounded-md text-sm font-bold transition-colors ${
-                  lang === "tr" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                TR
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Content */}
-      <main className="pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <Link href="/" className="inline-flex items-center text-primary hover:underline mb-8 font-medium">
-            ← {t.backToHome}
-          </Link>
-
-          <h1 className="text-4xl md:text-5xl font-black mb-4">{t.title}</h1>
-          <p className="text-muted-foreground mb-12">{t.lastUpdated}</p>
-
-          <div className="prose prose-lg max-w-none space-y-12">
-            {/* Overview */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.overview.title}</h2>
-              <p className="text-muted-foreground leading-relaxed">{t.sections.overview.content}</p>
-            </section>
-
-            {/* Data Collection */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.dataCollection.title}</h2>
-              <p className="text-xl font-bold mb-4">{t.sections.dataCollection.subtitle}</p>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.dataCollection.content}</p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                {t.sections.dataCollection.list.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Face Detection and Face Data */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.faceDetection.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.faceDetection.content}</p>
-              <p className="text-xl font-bold mb-4">{t.sections.faceDetection.subtitle}</p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                {t.sections.faceDetection.list.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Photos and Storage */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.photos.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.photos.content}</p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                {t.sections.photos.list.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Permissions */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.permissions.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.permissions.content}</p>
-              <div className="border border-border rounded-lg overflow-hidden mb-4">
-                <table className="w-full">
-                  <thead className="bg-muted">
-                    <tr>
-                      <th className="text-left p-4 font-bold">
-                        {lang === "ru" ? "Разрешение" : lang === "en" ? "Permission" : "İzin"}
-                      </th>
-                      <th className="text-left p-4 font-bold">
-                        {lang === "ru" ? "Цель" : lang === "en" ? "Purpose" : "Amaç"}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.sections.permissions.table.map((row, index) => (
-                      <tr key={index} className="border-t border-border">
-                        <td className="p-4">{row.permission}</td>
-                        <td className="p-4 text-muted-foreground">{row.purpose}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">{t.sections.permissions.footer}</p>
-            </section>
-
-            {/* Third-Party Services */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.thirdParty.title}</h2>
-              <p className="text-muted-foreground leading-relaxed">{t.sections.thirdParty.content}</p>
-            </section>
-
-            {/* Data Retention */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.dataRetention.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.dataRetention.content}</p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                {t.sections.dataRetention.list.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Children's Privacy */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.children.title}</h2>
-              <p className="text-muted-foreground leading-relaxed">{t.sections.children.content}</p>
-            </section>
-
-            {/* Changes to This Policy */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.changes.title}</h2>
-              <p className="text-muted-foreground leading-relaxed">{t.sections.changes.content}</p>
-            </section>
-
-            {/* App Operator */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.operator.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-2">{t.sections.operator.content}</p>
-              <p className="font-bold mb-2">{t.sections.operator.names}</p>
-              <p className="text-muted-foreground">{t.sections.operator.email}</p>
-            </section>
-
-            {/* Contact Us */}
-            <section>
-              <h2 className="text-3xl font-bold mb-4">{t.sections.contact.title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{t.sections.contact.content}</p>
-              <p className="font-bold">
-                {t.sections.contact.email}{" "}
-                <a href="mailto:info@superduperai.co" className="text-primary hover:underline">
-                  info@superduperai.co
-                </a>
-              </p>
-            </section>
-          </div>
-        </div>
-      </main>
-    </div>
-  )
+export function getPrivacyPolicyTranslations(locale: Locale) {
+  return translations[locale]
 }

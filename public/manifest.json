@@ -1,0 +1,21 @@
+{
+  "name": "FaceAlarm: Face Yoga Tracker",
+  "short_name": "FaceAlarm",
+  "description": "Face yoga progress tracker. Wake up, take a selfie, see your transformation. 100% private.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E27",
+  "theme_color": "#6DD5ED",
+  "icons": [
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-dark-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
