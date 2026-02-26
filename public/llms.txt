@@ -1,0 +1,35 @@
+# FaceAlarm
+
+> Face Yoga Tracker - AI-Powered Progress Tracking. Wake up, take a selfie, see your transformation.
+
+FaceAlarm is a free mobile app (iOS & Android) that helps users track their face yoga and facial exercise progress over time. It uses AI-powered face alignment to ensure consistent selfie angles, making it easy to see real transformation results.
+
+## Core Features
+
+- Daily Selfie Alarm: Set a recurring alarm to remind you to take your daily progress photo
+- AI Face Alignment: Ghost overlay ensures you match your previous selfie angle every time
+- Streak Tracking: Build and maintain daily streaks to stay motivated
+- Calendar Gallery: View all your progress photos organized by date
+- Timelapse Generator: Create before/after timelapse videos from your photos
+- Progress Sharing: Share your transformation with friends or on social media
+
+## Privacy
+
+FaceAlarm is 100% private. All photos are stored locally on your device. No cloud uploads, no account required, works fully offline. No subscriptions.
+
+## Use Cases
+
+- Face yoga practitioners tracking facial exercise results
+- Gua sha enthusiasts monitoring skin improvements
+- Skincare routines progress documentation
+- Post-procedure recovery tracking
+- General facial transformation journaling
+
+## Links
+
+- Website: https://face-alarm.com
+- App Store: https://apps.apple.com/app/id6758454962
+- Google Play: https://play.google.com/store/apps/details?id=com.facealarm.app
+- Photo Guide: https://face-alarm.com/en/photo-guide
+- Privacy Policy: https://face-alarm.com/en/privacy-policy
+- Support: info@superduperai.co

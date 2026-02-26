@@ -99,10 +99,11 @@ export async function generateMetadata({
       alternateLocale: locales.filter((l) => l !== locale).map((l) => ogLocaleMap[l]),
       images: [
         {
-          url: `${baseUrl}/images/facealarm-logo.png`,
-          width: 512,
-          height: 512,
-          alt: "FaceAlarm — Face Yoga Tracker App",
+          url: `${baseUrl}/images/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: "FaceAlarm — Face Yoga Tracker: AI-Powered Progress Tracking",
+          type: "image/png",
         },
       ],
     },
@@ -110,7 +111,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`${baseUrl}/images/facealarm-logo.png`],
+      images: [`${baseUrl}/images/og-image.png`],
     },
     appleWebApp: {
       capable: true,
@@ -121,26 +122,66 @@ export async function generateMetadata({
   }
 }
 
-const jsonLd = {
+const jsonLdGraph = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "FaceAlarm",
-  alternateName: "FaceAlarm: Face Yoga Tracker",
-  description:
-    "Face yoga progress tracker. Set an alarm, take a daily selfie, track your transformation with AI alignment. 100% private, works offline.",
-  url: baseUrl,
-  applicationCategory: "HealthApplication",
-  operatingSystem: "iOS, Android",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  installUrl: [
-    "https://apps.apple.com/app/id6758454962",
-    "https://play.google.com/store/apps/details?id=com.facealarm.app",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      url: baseUrl,
+      name: "FaceAlarm",
+      description:
+        "Face Yoga Tracker - AI-Powered Progress Tracking. Wake up, take a selfie, see your transformation.",
+      publisher: { "@id": `${baseUrl}/#organization` },
+      inLanguage: ["en", "ru", "tr"],
+    },
+    {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "FaceAlarm",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/images/facealarm-logo.png`,
+        width: 1024,
+        height: 1024,
+      },
+      sameAs: [
+        "https://apps.apple.com/app/id6758454962",
+        "https://play.google.com/store/apps/details?id=com.facealarm.app",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "info@superduperai.co",
+        contactType: "customer support",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${baseUrl}/#app`,
+      name: "FaceAlarm",
+      alternateName: "FaceAlarm: Face Yoga Tracker",
+      description:
+        "Face yoga progress tracker. Set an alarm, take a daily selfie, track your transformation with AI alignment. 100% private, works offline.",
+      url: baseUrl,
+      applicationCategory: "HealthApplication",
+      operatingSystem: "iOS, Android",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      installUrl: [
+        "https://apps.apple.com/app/id6758454962",
+        "https://play.google.com/store/apps/details?id=com.facealarm.app",
+      ],
+      screenshot: `${baseUrl}/images/facealarm-1.webp`,
+      image: `${baseUrl}/images/og-image.png`,
+      featureList:
+        "Face detection, Ghost overlay, Streak tracking, Calendar gallery, Timelapse, Progress sharing",
+      author: { "@id": `${baseUrl}/#organization` },
+      aggregateRating: undefined,
+    },
   ],
-  screenshot: `${baseUrl}/images/facealarm-1.webp`,
-  featureList:
-    "Face detection, Ghost overlay, Streak tracking, Calendar gallery, Timelapse, Progress sharing",
-  author: { "@type": "Organization", name: "FaceAlarm", url: baseUrl },
 }
+// Remove undefined values from serialization
+const jsonLdClean = JSON.parse(JSON.stringify(jsonLdGraph))
 
 export default async function LocaleLayout({
   children,
@@ -161,7 +202,7 @@ export default async function LocaleLayout({
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdClean) }}
         />
       </head>
       <body className="font-sans antialiased">
