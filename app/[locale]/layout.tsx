@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import { notFound } from "next/navigation"
 import { locales, isValidLocale, type Locale } from "@/i18n/config"
 import "../globals.css"
@@ -207,6 +208,19 @@ export default async function LocaleLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+        {/*
+          Our own counter. No cookie and no client-side id at all — the anonymous id is
+          derived at the edge and rotates daily — so it adds nothing to the consent question.
+          It exists so this landing and the iOS app of the same product are counted together.
+          https://github.com/fortunto2/superduper-analytics
+        */}
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            src="https://analytics.superduperai.co/sda.js"
+            data-source="facealarm"
+            strategy="afterInteractive"
+          />
+        )}
         <Analytics />
       </body>
     </html>
