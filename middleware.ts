@@ -22,7 +22,13 @@ export function middleware(request: NextRequest) {
   )
   if (pathnameLocale) return NextResponse.next()
 
-  // Redirect bare root `/` to preferred locale
+  // Куда вести — решает Accept-Language, то есть ответ РАЗНЫЙ для разных посетителей.
+  // Поэтому оба редиректа ниже временные (307), и это не недоделка.
+  //
+  // Постоянный редирект здесь был бы ошибкой: браузер и любой общий кэш запомнили бы одну
+  // локаль навсегда и отдавали бы её всем. Раньше так и было на втором из них — русский
+  // посетитель, однажды открывший /photo-guide, закреплял /ru/photo-guide за этим адресом
+  // у себя, а промежуточный кэш мог закрепить его и за чужими.
   if (pathname === "/") {
     const locale = getPreferredLocale(request)
     return NextResponse.redirect(new URL(`/${locale}`, request.url))
@@ -32,7 +38,7 @@ export function middleware(request: NextRequest) {
   const knownPaths = ["/photo-guide", "/privacy-policy"]
   if (knownPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
     const locale = getPreferredLocale(request)
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url), 301)
+    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url), 307)
   }
 
   return NextResponse.next()
