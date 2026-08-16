@@ -12,21 +12,30 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 const baseUrl = "https://face-alarm.com"
 
+/*
+ * Titles lead with "alarm clock", which is what people actually type and what the app actually is.
+ *
+ * Search Console, 16 months: 78 impressions for "face alarm" at position 5.9 — first page — and
+ * zero clicks. Autocomplete says the query behind it is "face alarm clock". The title said
+ * "Face Yoga Tracker" and never used the word clock, so everyone who searched for an alarm saw a
+ * tracker and scrolled past. The app schedules a real wake-up alarm with sound, snooze and
+ * weekdays; face yoga is what it is *for*, not what it *is*.
+ */
 const metaByLocale: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: "FaceAlarm: Face Yoga Tracker — Daily Selfie Alarm for Progress Tracking",
+    title: "Face Alarm Clock — wake up, take a selfie, track your face yoga",
     description:
-      "Free face yoga progress tracker app. Set an alarm, take a daily selfie, track your transformation with AI alignment. 100% private, works offline. No subscriptions.",
+      "A free alarm clock you switch off with a selfie. It wakes you at the time you set, lines up each photo with the last one, and turns weeks of them into a timelapse of your face yoga progress. Works offline, no account, no subscription.",
   },
   ru: {
-    title: "FaceAlarm: Трекер фейс-йоги — будильник с селфи для отслеживания прогресса",
+    title: "Будильник с селфи — просыпайтесь и снимайте прогресс фейс-йоги",
     description:
-      "Бесплатный трекер прогресса по фейс-йоге. Ставьте будильник, делайте ежедневные селфи, отслеживайте трансформацию с AI-выравниванием. 100% приватно, работает офлайн.",
+      "Бесплатный будильник, который выключается селфи. Будит в заданное время, совмещает каждый снимок с предыдущим и собирает из них таймлапс прогресса фейс-йоги. Работает офлайн, без аккаунта и подписки.",
   },
   tr: {
-    title: "FaceAlarm: Yüz Yogası Takipçisi — İlerleme Takibi İçin Günlük Selfie Alarmı",
+    title: "Selfie Alarmı — uyanın, selfie çekin, yüz yogası ilerlemenizi izleyin",
     description:
-      "Ücretsiz yüz yogası ilerleme takibi uygulaması. Alarm kurun, günlük selfie çekin, AI hizalama ile dönüşümünüzü takip edin. %100 gizli, çevrimdışı çalışır.",
+      "Selfie ile kapattığınız ücretsiz alarm saati. Kurduğunuz saatte uyandırır, her fotoğrafı bir öncekiyle hizalar ve haftaların karelerini yüz yogası ilerlemenizin zaman atlamalı videosuna dönüştürür. Çevrimdışı çalışır, hesap ve abonelik yok.",
   },
 }
 
