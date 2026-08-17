@@ -1,30 +1,6 @@
-import type { Locale } from "./config"
+import type { Article } from "./types"
 
-/**
- * Articles, written against queries people actually type.
- *
- * From Google autocomplete around face yoga: "real or fake", "works or not", "before after 1 month",
- * "how to cancel face yoga app subscription", "how much is face yoga app". Two feelings run through
- * all of it — doubt that it works, and irritation at subscriptions.
- *
- * So the articles answer honestly, including where the honest answer is "the evidence is thin". An
- * article that oversells face yoga would convert worse than one that levels with the reader: the
- * app's whole proposition is that you find out for yourself instead of trusting a claim.
- */
-export interface Article {
-  slug: string
-  title: string
-  description: string
-  /** Shown in the listing. */
-  excerpt: string
-  date: string
-  /** Section heading and paragraphs. HTML is allowed in paragraphs for links. */
-  body: { heading?: string; paragraphs: string[] }[]
-  /** The question the piece exists to answer, for the FAQ schema. */
-  faq: { q: string; a: string }[]
-}
-
-const EN: Article[] = [
+export const EN: Article[] = [
   {
     slug: "does-face-yoga-work",
     title: "Does face yoga actually work? What the research says, and how to check on yourself",
@@ -189,18 +165,78 @@ const EN: Article[] = [
       },
     ],
   },
+  {
+    slug: "best-face-yoga-apps-compared",
+    title: "Face yoga apps compared: which ones teach, which one measures",
+    description:
+      "Luvly, FaceYogi, FaceLuv and FaceAlarm side by side. Most face yoga apps sell an exercise programme by subscription. One of them only keeps the photographic record, and the two are not competing.",
+    excerpt:
+      "Four apps, and the useful split is not better versus worse. Almost all of them teach exercises for a monthly fee. Deciding whether the exercises work is a different job.",
+    date: "2026-08-17",
+    body: [
+      {
+        paragraphs: [
+          "Search for a face yoga app and the results look interchangeable: similar screenshots, similar promises, similar monthly price. Ranking them by quality is mostly guesswork, and every ranked list you find was written by one of the apps in it.",
+          "There is a more useful line to draw. Almost all of these apps sell instruction, and one sells nothing at all because it only keeps the record. Which you need depends on whether you are missing routines or missing proof.",
+        ],
+      },
+      {
+        heading: "The four, on the numbers that can be checked",
+        paragraphs: [
+          "Ratings and review counts below come from Apple's public lookup API for the US store, read on 17 August 2026. They say how many people have used a thing and how they felt, and nothing about whether face yoga works.",
+        ],
+        table: {
+          head: ["App", "Rating", "Ratings", "Sells", "Progress photos"],
+          rows: [
+            ["Luvly (Gismart)", "4.6", "19,917", "Exercise programme, skin scanner, meal plans", "No alignment guide"],
+            ["FaceYogi (Lollitech)", "4.8", "16,355", "Exercise and massage programme", "No alignment guide"],
+            ["FaceLuv (TEQUILAB)", "4.8", "264", "Exercise programme", "No alignment guide"],
+            ["FaceAlarm", "5.0", "1", "Nothing, it is free", "Daily alarm, ghost overlay, timelapse"],
+          ],
+          note: "FaceAlarm has one rating because it launched recently. A five-star average over a single review is not a comparison, and presenting it as one would be the kind of thing this article is arguing against.",
+        },
+      },
+      {
+        heading: "What the subscription buys",
+        paragraphs: [
+          "The paid apps charge somewhere between about $7 and $30 a month depending on the app and the plan, going by their public listings in August 2026. Prices move often and vary by country, so check the App Store rather than any article, including this one.",
+          "For that you get sequenced routines, video coaching, streaks, and in Luvly's case a set of adjacent features like an ingredient scanner and meal plans. That is genuine product work, and if you have no idea which exercises to do, it is a reasonable thing to buy for a month.",
+          "What none of it settles is whether the exercises are doing anything to your face. A streak counter measures attendance, not results.",
+        ],
+      },
+      {
+        heading: "Why the photo record is the part that gets skipped",
+        paragraphs: [
+          "Face yoga changes things slowly enough that a mirror cannot see it, which leaves photographs. Photographs only work when they are comparable, and the thing that breaks comparability is angle: two degrees of chin tilt moves a jawline more than a month of exercises. That is why most before-and-after pairs, including the ones in adverts, prove very little.",
+          "Every app here can store a selfie. The question is whether anything helps you take the next one from the same position, and that is where the gap sits. Lining up today's shot with yesterday's by eye, in a bathroom mirror, before coffee, is not something people keep up for thirty days.",
+          "<a href=\"/en\">FaceAlarm</a> does that one job: an alarm at a fixed time, yesterday's photo as a ghost so today's lines up, and the month stitched into a timelapse. Free, no account, and the photos stay on the phone with no upload.",
+        ],
+      },
+      {
+        heading: "So which one",
+        paragraphs: [
+          "If you do not know what to do with your face, buy a month of any well-rated programme, or use the free routines on YouTube, which are the same exercises.",
+          "If you have been doing it for weeks and cannot tell whether it is working, no programme will answer that. A comparable daily photo will, and after thirty days the answer is yours rather than a marketing claim. Running both at once is the sensible arrangement, and it is the reason this app has no exercise content to sell you.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Which face yoga app is the best?",
+        a: "It depends on what is missing. For learning exercises, the well-rated paid programmes such as Luvly and FaceYogi are reasonable, and the routines are also free on YouTube. For finding out whether the exercises change your face, you need a comparable daily photo record rather than a programme, which is a separate tool.",
+      },
+      {
+        q: "Is there a free alternative to Luvly?",
+        a: "For the exercises, YouTube routines from the practitioners who popularised face yoga cost nothing. For tracking, FaceAlarm is free with no subscription and no account. Neither replaces the coaching and structure a paid app provides.",
+      },
+      {
+        q: "Do face yoga apps track your progress with photos?",
+        a: "Most let you save selfies, but saving is not the hard part. Without something that helps you match yesterday's angle, the resulting pair mainly records how you held the camera, which is why so many before-and-after comparisons are unreadable.",
+      },
+      {
+        q: "Can I use a face yoga app and a tracker together?",
+        a: "That is the intended arrangement. Follow whichever programme you like, free or paid, and keep the photo record separately so the verdict does not come from the same company selling you the routine.",
+      },
+    ],
+  },
 ]
-
-/**
- * English only, deliberately.
- *
- * Serving the English articles under /ru/ and /tr/ would put a wall of English under a translated
- * navigation, and a machine translation of a piece whose whole value is being straight with the
- * reader would undercut it. The locales get no blog until the articles are written in them, and
- * the listing simply does not appear there.
- */
-export const articlesByLocale: Record<Locale, Article[]> = {
-  en: EN,
-  ru: [],
-  tr: [],
-}

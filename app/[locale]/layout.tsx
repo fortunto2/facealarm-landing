@@ -70,6 +70,8 @@ export async function generateMetadata({
   for (const l of locales) {
     languages[l] = `${baseUrl}/${l}`
   }
+  // Where a search engine should send anyone whose language we do not publish.
+  languages["x-default"] = `${baseUrl}/en`
 
   return {
     metadataBase: new URL(baseUrl),
@@ -214,10 +216,18 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {locales.map((l) => (
-          <link key={l} rel="alternate" hrefLang={l} href={`${baseUrl}/${l}`} />
-        ))}
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
+        {/*
+          hreflang is NOT emitted here.
+
+          These links used to be written by hand in this head, always pointing at the root of each
+          locale. Because the layout wraps every page, each blog article ended up declaring the
+          landing page as its own translation, which is a wrong answer to the one question hreflang
+          asks. It also duplicated `alternates.languages` in generateMetadata, and two mechanisms
+          answering one question is how they drift.
+
+          Every route now declares its own alternates in generateMetadata, so an article points at
+          its translations and the landing page points at the other landings.
+        */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdClean) }}

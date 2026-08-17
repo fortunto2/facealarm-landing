@@ -2,7 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { isValidLocale, locales, type Locale } from "@/i18n/config"
-import { articlesByLocale } from "@/i18n/blog"
+import { articlesByLocale, blogChrome } from "@/i18n/blog"
 
 const baseUrl = "https://face-alarm.com"
 
@@ -18,15 +18,24 @@ export async function generateMetadata({
   const { locale } = await params
   if (!isValidLocale(locale)) return {}
 
-  const title = "Face yoga: what the evidence says, and how to check on yourself"
-  const description =
-    "Straight answers on whether face yoga works, what a month of it realistically changes, and why the photo record matters more than the programme."
+  const chrome = blogChrome[locale as Locale]
+  const languages: Record<string, string> = {}
+  for (const l of locales) {
+    if (articlesByLocale[l].length > 0) languages[l] = `${baseUrl}/${l}/blog`
+  }
+  if (languages.en) languages["x-default"] = languages.en
 
   return {
-    title,
-    description,
-    alternates: { canonical: `${baseUrl}/${locale}/blog` },
-    openGraph: { title, description, url: `${baseUrl}/${locale}/blog`, type: "website" },
+    title: chrome.indexMetaTitle,
+    description: chrome.indexMetaDescription,
+    alternates: { canonical: `${baseUrl}/${locale}/blog`, languages },
+    openGraph: {
+      title: chrome.indexMetaTitle,
+      description: chrome.indexMetaDescription,
+      url: `${baseUrl}/${locale}/blog`,
+      type: "website",
+      locale,
+    },
   }
 }
 
@@ -39,7 +48,10 @@ export default async function BlogIndex({
   if (!isValidLocale(locale)) notFound()
 
   const articles = articlesByLocale[locale as Locale]
+  // A locale with no articles has no listing rather than an empty page.
   if (articles.length === 0) notFound()
+
+  const chrome = blogChrome[locale as Locale]
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-20">
@@ -47,13 +59,8 @@ export default async function BlogIndex({
         ← FaceAlarm
       </Link>
 
-      <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
-        Face yoga, without the sales pitch
-      </h1>
-      <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-        Whether it works, what a month of it changes, and why nobody should be charging you a
-        subscription to find out.
-      </p>
+      <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">{chrome.indexTitle}</h1>
+      <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{chrome.indexLede}</p>
 
       <div className="mt-14 space-y-10">
         {articles.map((article) => (
@@ -63,7 +70,7 @@ export default async function BlogIndex({
                 {article.title}
               </h2>
               <p className="mt-3 text-muted-foreground">{article.excerpt}</p>
-              <span className="mt-4 inline-block text-sm text-primary">Read →</span>
+              <span className="mt-4 inline-block text-sm text-primary">{chrome.read} →</span>
             </Link>
           </article>
         ))}
