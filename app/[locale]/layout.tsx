@@ -13,29 +13,36 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const baseUrl = "https://face-alarm.com"
 
 /*
- * Titles lead with "alarm clock", which is what people actually type and what the app actually is.
+ * Titles answer the question the audience is actually asking.
  *
- * Search Console, 16 months: 78 impressions for "face alarm" at position 5.9 — first page — and
- * zero clicks. Autocomplete says the query behind it is "face alarm clock". The title said
- * "Face Yoga Tracker" and never used the word clock, so everyone who searched for an alarm saw a
- * tracker and scrolled past. The app schedules a real wake-up alarm with sound, snooze and
- * weekdays; face yoga is what it is *for*, not what it *is*.
+ * Two wrong guesses preceded this one. "Face yoga tracker" missed because nobody searches for a
+ * tracker; "face alarm clock" missed harder, because Google's own suggestions for it are "large
+ * face", "smiley face", "wood face" — the word means the dial of a physical clock, so those 78
+ * impressions were people shopping for a bedside clock.
+ *
+ * What the face-yoga audience types, from autocomplete: "face yoga real or fake", "face yoga works
+ * or not", "face yoga before after 1 month", "how to cancel face yoga app subscription", "how much
+ * is face yoga app". Two feelings — they doubt it works, and they resent subscriptions. This app
+ * answers both: it is free, and what it produces is the before-and-after they are looking for.
+ *
+ * Note what it does NOT claim: the alarm can be dismissed without the selfie. iOS gives an app no
+ * way to hold an alarm hostage, so promising one would be a lie a user discovers on day one.
  */
 const metaByLocale: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: "Face Alarm Clock — wake up, take a selfie, track your face yoga",
+    title: "Does Face Yoga Work? Track It Yourself in 30 Days, Free App",
     description:
-      "A free alarm clock you switch off with a selfie. It wakes you at the time you set, lines up each photo with the last one, and turns weeks of them into a timelapse of your face yoga progress. Works offline, no account, no subscription.",
+      "Free app to find out whether face yoga is doing anything for you. A daily alarm, a selfie lined up with yesterday's, and a month later a before-and-after you took yourself. No subscription, no account, photos never leave your phone.",
   },
   ru: {
-    title: "Будильник с селфи — просыпайтесь и снимайте прогресс фейс-йоги",
+    title: "Работает ли фейс-йога? Проверьте на себе за 30 дней — бесплатно",
     description:
-      "Бесплатный будильник, который выключается селфи. Будит в заданное время, совмещает каждый снимок с предыдущим и собирает из них таймлапс прогресса фейс-йоги. Работает офлайн, без аккаунта и подписки.",
+      "Бесплатное приложение, чтобы понять, даёт ли фейс-йога результат именно вам. Утреннее напоминание, селфи с выравниванием по вчерашнему кадру, через месяц — ваше собственное «до и после». Без подписки, без аккаунта, снимки не уходят с телефона.",
   },
   tr: {
-    title: "Selfie Alarmı — uyanın, selfie çekin, yüz yogası ilerlemenizi izleyin",
+    title: "Yüz yogası işe yarıyor mu? 30 günde kendinizde ölçün — ücretsiz",
     description:
-      "Selfie ile kapattığınız ücretsiz alarm saati. Kurduğunuz saatte uyandırır, her fotoğrafı bir öncekiyle hizalar ve haftaların karelerini yüz yogası ilerlemenizin zaman atlamalı videosuna dönüştürür. Çevrimdışı çalışır, hesap ve abonelik yok.",
+      "Yüz yogasının size bir şey yapıp yapmadığını görmek için ücretsiz uygulama. Sabah hatırlatması, dünküyle hizalanmış bir selfie ve bir ay sonra kendi çektiğiniz öncesi-sonrası. Abonelik yok, hesap yok, fotoğraflar telefonunuzdan çıkmıyor.",
   },
 }
 
@@ -112,7 +119,7 @@ export async function generateMetadata({
           url: `${baseUrl}/images/og-image.png`,
           width: 1200,
           height: 630,
-          alt: "FaceAlarm — Face Yoga Tracker: AI-Powered Progress Tracking",
+          alt: "FaceAlarm, Face Yoga Tracker: AI-Powered Progress Tracking",
           type: "image/png",
         },
       ],
@@ -218,8 +225,8 @@ export default async function LocaleLayout({
       <body className="font-sans antialiased">
         {children}
         {/*
-          Our own counter. No cookie and no client-side id at all — the anonymous id is
-          derived at the edge and rotates daily — so it adds nothing to the consent question.
+          Our own counter. No cookie and no client-side id at all. The anonymous id is
+          derived at the edge and rotates daily, so it adds nothing to the consent question.
           It exists so this landing and the iOS app of the same product are counted together.
           https://github.com/fortunto2/superduper-analytics
         */}

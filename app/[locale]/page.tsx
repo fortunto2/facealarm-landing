@@ -6,6 +6,7 @@ import { isValidLocale, type Locale } from "@/i18n/config"
 import { getLandingTranslations } from "@/i18n/landing"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { HowItWorksCarousel } from "@/components/HowItWorksCarousel"
+import { articlesByLocale } from "@/i18n/blog"
 
 export default async function LandingPage({
   params,
@@ -207,6 +208,11 @@ export default async function LandingPage({
               <span className="font-bold text-xl">FaceAlarm</span>
             </div>
             <div className="flex gap-8 text-sm text-muted-foreground">
+              {articlesByLocale[locale].length > 0 && (
+                <a href={`/${locale}/blog`} className="hover:text-foreground transition-colors font-medium">
+                  Blog
+                </a>
+              )}
               <a href={`/${locale}/privacy-policy`} className="hover:text-foreground transition-colors font-medium">
                 {t.footer.privacy}
               </a>
