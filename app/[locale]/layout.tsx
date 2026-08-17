@@ -6,6 +6,7 @@ import Script from "next/script"
 import { notFound } from "next/navigation"
 import { locales, isValidLocale, type Locale } from "@/i18n/config"
 import "../globals.css"
+import { APP_STORE_URL } from "@/i18n/app"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -164,7 +165,7 @@ const jsonLdGraph = {
         height: 1024,
       },
       sameAs: [
-        "https://apps.apple.com/app/id6758454962",
+        APP_STORE_URL,
         "https://play.google.com/store/apps/details?id=com.facealarm.app",
       ],
       contactPoint: {
@@ -185,7 +186,7 @@ const jsonLdGraph = {
       operatingSystem: "iOS, Android",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       installUrl: [
-        "https://apps.apple.com/app/id6758454962",
+        APP_STORE_URL,
         "https://play.google.com/store/apps/details?id=com.facealarm.app",
       ],
       screenshot: `${baseUrl}/images/facealarm-1.webp`,

@@ -7,6 +7,7 @@ import { getLandingTranslations } from "@/i18n/landing"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { HowItWorksCarousel } from "@/components/HowItWorksCarousel"
 import { articlesByLocale } from "@/i18n/blog"
+import { APP_STORE_URL } from "@/i18n/app"
 
 export default async function LandingPage({
   params,
@@ -72,7 +73,7 @@ export default async function LandingPage({
                 />
               </a>
               <a
-                href="https://apps.apple.com/app/id6758454962"
+                href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-transform hover:scale-105"
@@ -183,7 +184,7 @@ export default async function LandingPage({
               />
             </a>
             <a
-              href="https://apps.apple.com/app/id6758454962"
+              href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform hover:scale-105"

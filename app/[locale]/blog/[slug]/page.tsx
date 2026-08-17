@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { isValidLocale, locales, type Locale } from "@/i18n/config"
 import { articlesByLocale } from "@/i18n/blog"
+import { APP_STORE_URL } from "@/i18n/app"
 
 const baseUrl = "https://face-alarm.com"
 
@@ -114,12 +115,17 @@ export default async function ArticlePage({
           A daily alarm, a selfie lined up with yesterday&apos;s, and a timelapse at the end of the
           month. Free, no account, photos stay on your phone.
         </p>
-        <Link
-          href={`/${locale}`}
-          className="mt-6 inline-block rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"
-        >
-          Get FaceAlarm
-        </Link>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <a
+            href={APP_STORE_URL}
+            className="inline-block rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"
+          >
+            Download on the App Store
+          </a>
+          <Link href={`/${locale}`} className="text-sm text-muted-foreground hover:text-foreground">
+            or read how it works
+          </Link>
+        </div>
       </section>
     </main>
   )
