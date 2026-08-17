@@ -220,6 +220,14 @@ export const TR: Article[] = [
         ],
       },
       {
+        heading: "Diğer yarısı: sizi kaldıran alarmlar",
+        paragraphs: [
+          "Bu uygulamanın yanında duran ikinci bir kategori var ve çok daha büyük. Alarmy'nin ABD App Store'unda 4,8 puanla yaklaşık 243.000 değerlendirmesi var ve fikir, alarmı uykunuzda kapatmanızı engellemek: lavaboyu fotoğraflayın, işlem çözün, barkod okutun, telefonu sallayın. Alarm Clock Xtreme ve diğerleri aynı şeyi başka görevlerle yapıyor.",
+          "Kendi işlerini iyi yapıyorlar. Geride bırakmadıkları şey bir kayıt. Lavabo fotoğrafı kalktığınızı kanıtlar; silinir, dünküyle karşılaştırılamaz ve kimse ona bir daha bakmaz.",
+          "FaceAlarm iki fikri birleştirir: sizi kaldıran görev selfie'dir ve aynı selfie kanıt olur. Android'de alarm katı olanlar gibi davranır: geri tuşu çalışmaz ve fotoğraf çekilene kadar ses susmaz. iPhone'da bildirimde Ertele ve Kapat vardır, çünkü iOS bir alarmı bir eyleme rehin tutmaya izin vermez.",
+        ],
+      },
+      {
         heading: "Peki hangisi",
         paragraphs: [
           "Yüzünüzle ne yapacağınızı bilmiyorsanız, puanı iyi herhangi bir programın bir ayını alın ya da YouTube'daki ücretsiz rutinleri kullanın, egzersizler aynı.",

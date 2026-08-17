@@ -200,6 +200,21 @@ export default async function LandingPage({
         </div>
       </section>
 
+      {/* FAQ — including the one difference between the platforms people otherwise discover by surprise */}
+      <section className="py-20 px-4 border-t border-border">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-black mb-10 text-balance">{t.faq.title}</h2>
+          <div className="space-y-8">
+            {t.faq.items.map((item) => (
+              <div key={item.q}>
+                <h3 className="text-lg font-semibold mb-2">{item.q}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-border py-12 px-4">
         <div className="container mx-auto max-w-6xl">

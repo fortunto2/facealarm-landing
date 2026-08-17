@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { BlogHeader } from "@/components/blog-header"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { isValidLocale, locales, type Locale } from "@/i18n/config"
@@ -54,11 +55,9 @@ export default async function BlogIndex({
   const chrome = blogChrome[locale as Locale]
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-20">
-      <Link href={`/${locale}`} className="text-sm text-muted-foreground hover:text-foreground">
-        ← FaceAlarm
-      </Link>
-
+    <>
+      <BlogHeader locale={locale as Locale} />
+      <main className="mx-auto max-w-3xl px-6 py-14">
       <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">{chrome.indexTitle}</h1>
       <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{chrome.indexLede}</p>
 
@@ -75,6 +74,7 @@ export default async function BlogIndex({
           </article>
         ))}
       </div>
-    </main>
+      </main>
+    </>
   )
 }

@@ -213,6 +213,14 @@ export const EN: Article[] = [
         ],
       },
       {
+        heading: "The other half: alarms that make you get up",
+        paragraphs: [
+          "There is a second category this app sits next to, and it is much larger. Alarmy has around 243,000 ratings on the US App Store at 4.8 stars, and the idea is to stop you dismissing the alarm in your sleep: photograph the bathroom sink, solve a sum, scan a barcode, shake the phone. Alarm Clock Xtreme and several others do the same thing with different tasks.",
+          "They are good at the part they are for. What they do not leave behind is a record. The photo of the sink proves you stood up; it is deleted, it is not comparable to yesterday's, and nobody would look at it again.",
+          "FaceAlarm is the two ideas joined: the task that gets you up is the selfie, and the selfie is also the evidence. On Android the alarm behaves like the strict ones — the back button does nothing and the sound continues until the photo is taken. On iPhone the notification carries Snooze and Dismiss, because iOS does not let an app hold an alarm hostage to an action.",
+        ],
+      },
+      {
         heading: "So which one",
         paragraphs: [
           "If you do not know what to do with your face, buy a month of any well-rated programme, or use the free routines on YouTube, which are the same exercises.",

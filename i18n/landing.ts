@@ -30,7 +30,7 @@ const translations = {
     features: {
       title: "Возможности",
       items: [
-        { title: "Распознавание лица", description: "Только реальные селфи — никаких хитростей." },
+        { title: "Распознавание лица", description: "Рамка зеленеет, когда лицо в кадре по центру." },
         { title: "Ghost-наложение", description: "Идеальное выравнивание с предыдущими фото." },
         { title: "Отслеживание серий", description: "Создайте ежедневную привычку и не прерывайте её." },
         { title: "Календарь-галерея", description: "Просматривайте фото по датам." },
@@ -100,6 +100,31 @@ const translations = {
       googlePlay: "Доступно в Google Play",
       appStore: "Загрузить в App Store",
     },
+    faq: {
+      title: "Вопросы",
+      items: [
+        {
+          q: "Можно выключить будильник, не сделав селфи?",
+          a: "На Android нельзя. Кнопка «назад» не работает, экран поднимается поверх блокировки, а звук не смолкнет, пока не сделан снимок. На iPhone можно: в уведомлении есть «Отложить» и «Выключить», потому что iOS не даёт держать будильник в залоге под действие. Приложение одно, а разницу задаёт операционная система, а не наше решение.",
+        },
+        {
+          q: "Приложение проверяет, что это моё лицо?",
+          a: "Оно проверяет, что лицо есть в кадре и примерно по центру, и подсвечивает рамку зелёным. Оно не опознаёт вас и не отличит лицо от фотографии лица. Смысл распознавания в том, чтобы помочь выстроить кадр, а не контролировать вас.",
+        },
+        {
+          q: "Где хранятся снимки?",
+          a: "В вашей собственной медиатеке, в папке или альбоме FaceAlarm. Ничего не загружается в интернет, нет аккаунта и облака, приложение работает офлайн. Удаление приложения снимки не стирает, а «Синхронизировать фото» в настройках находит их снова после переустановки.",
+        },
+        {
+          q: "Это правда бесплатно?",
+          a: "Отслеживание бесплатно, без подписки и без аккаунта. На Android и iPhone это и есть всё приложение.",
+        },
+        {
+          q: "Через сколько будет видно результат?",
+          a: "Тридцати дней хватает, чтобы понять, есть ли сдвиг. Тонус мышц щёк и челюсти за это время измениться может, плотность кожи — нет: коллаген за четыре недели не перестраивается.",
+        },
+      ],
+    },
     footer: {
       privacy: "Политика конфиденциальности",
       terms: "Условия использования",
@@ -131,7 +156,7 @@ const translations = {
     features: {
       title: "Features",
       items: [
-        { title: "Face detection", description: "Ensures real selfies only, no cheating." },
+        { title: "Face detection", description: "The guide turns green when your face is centred." },
         { title: "Ghost overlay", description: "Align perfectly with previous photos." },
         { title: "Streak tracking", description: "Build your daily habit and keep it going." },
         { title: "Calendar gallery", description: "Browse your photos by date." },
@@ -201,6 +226,31 @@ const translations = {
       googlePlay: "Get it on Google Play",
       appStore: "Download on the App Store",
     },
+    faq: {
+      title: "Questions",
+      items: [
+        {
+          q: "Can I turn the alarm off without taking the selfie?",
+          a: "On Android, no. The back button does nothing, the screen opens over the lock screen, and the sound keeps going until the photo is taken. On iPhone you can: the notification carries Snooze and Dismiss, because iOS does not let an app hold an alarm hostage to an action. Same app, and the difference is the operating system rather than a decision we made.",
+        },
+        {
+          q: "Does it check that it is really my face?",
+          a: "It checks that a face is there and roughly centred, and turns the guide green. It does not identify you, and it cannot tell your face from a photo of a face. The point of the detection is to help you line the shot up, not to police it.",
+        },
+        {
+          q: "Where are my photos kept?",
+          a: "In your own photo library, in a FaceAlarm folder or album. Nothing is uploaded, there is no account and no cloud, and the app works offline. Deleting the app never deletes the photos, and Sync photos in Settings finds them again after a reinstall.",
+        },
+        {
+          q: "Is it really free?",
+          a: "The tracking is free with no subscription and no account. That is the whole app on Android and iPhone.",
+        },
+        {
+          q: "How long before I see anything?",
+          a: "Thirty days is enough to see whether anything is moving. Muscle tone around the cheeks and jaw can plausibly change in that time; skin firmness cannot, since collagen does not rebuild in four weeks.",
+        },
+      ],
+    },
     footer: {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
@@ -232,7 +282,7 @@ const translations = {
     features: {
       title: "Özellikler",
       items: [
-        { title: "Yüz algılama", description: "Sadece gerçek selfie'ler — hile yok." },
+        { title: "Yüz algılama", description: "Yüzünüz ortalandığında kılavuz yeşile döner." },
         { title: "Hayalet katman", description: "Önceki fotoğraflarla mükemmel hizalama." },
         { title: "Seri takibi", description: "Günlük alışkanlığınızı oluşturun ve sürdürün." },
         { title: "Takvim galerisi", description: "Fotoğraflarınızı tarihe göre inceleyin." },
@@ -301,6 +351,31 @@ const translations = {
       download: "FaceAlarm İndir",
       googlePlay: "Google Play'de edinin",
       appStore: "App Store'dan indirin",
+    },
+    faq: {
+      title: "Sorular",
+      items: [
+        {
+          q: "Selfie çekmeden alarmı kapatabilir miyim?",
+          a: "Android'de hayır. Geri tuşu çalışmaz, ekran kilidin üstünde açılır ve fotoğraf çekilene kadar ses susmaz. iPhone'da kapatabilirsiniz: bildirimde Ertele ve Kapat var, çünkü iOS bir alarmı bir eyleme rehin tutmaya izin vermiyor. Uygulama aynı; farkı bizim kararımız değil, işletim sistemi belirliyor.",
+        },
+        {
+          q: "Gerçekten benim yüzüm mü diye kontrol ediyor mu?",
+          a: "Karede bir yüz olduğunu ve yaklaşık ortalandığını kontrol eder, kılavuzu yeşile çevirir. Sizi tanımaz ve bir yüzü, bir yüzün fotoğrafından ayırt edemez. Algılamanın amacı kareyi hizalamanıza yardım etmek, sizi denetlemek değil.",
+        },
+        {
+          q: "Fotoğraflarım nerede saklanıyor?",
+          a: "Kendi fotoğraf kitaplığınızda, FaceAlarm klasöründe ya da albümünde. Hiçbir şey yüklenmez, hesap ve bulut yoktur, uygulama çevrimdışı çalışır. Uygulamayı silmek fotoğrafları silmez; yeniden kurulumdan sonra Ayarlar'daki «Fotoğrafları eşitle» onları yeniden bulur.",
+        },
+        {
+          q: "Gerçekten ücretsiz mi?",
+          a: "Takip ücretsiz, abonelik ve hesap yok. Android ve iPhone'da uygulamanın tamamı bu.",
+        },
+        {
+          q: "Sonucu ne kadar sürede görürüm?",
+          a: "Otuz gün, bir şeyin kıpırdayıp kıpırdamadığını görmek için yeterli. Yanak ve çene çevresindeki kas tonu bu sürede değişebilir; cilt sıkılığı değişmez, çünkü kolajen dört haftada yeniden yapılanmaz.",
+        },
+      ],
     },
     footer: {
       privacy: "Gizlilik Politikası",

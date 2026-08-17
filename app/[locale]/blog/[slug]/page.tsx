@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { BlogHeader } from "@/components/blog-header"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { isValidLocale, locales, type Locale } from "@/i18n/config"
@@ -83,7 +84,9 @@ export default async function ArticlePage({
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-20">
+    <>
+      <BlogHeader locale={locale as Locale} />
+      <main className="mx-auto max-w-3xl px-6 py-14">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <Link href={`/${locale}/blog`} className="text-sm text-muted-foreground hover:text-foreground">
@@ -174,6 +177,7 @@ export default async function ArticlePage({
           </Link>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
