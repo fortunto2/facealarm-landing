@@ -3,7 +3,7 @@ import type { Locale } from "./config"
 const translations = {
   ru: {
     title: "Политика конфиденциальности",
-    lastUpdated: "Последнее обновление: 2 февраля 2026",
+    lastUpdated: "Последнее обновление: 22 августа 2026",
     sections: {
       overview: {
         title: "Обзор",
@@ -12,14 +12,28 @@ const translations = {
       },
       dataCollection: {
         title: "Сбор данных",
-        subtitle: "Мы не собираем никаких персональных данных.",
+        subtitle: "Мы не собираем персональных данных.",
         content: "FaceAlarm разработан с учетом конфиденциальности как основного принципа:",
         list: [
           "Не требуется регистрация или создание аккаунта",
           "Нет облачного хранилища или синхронизации",
-          "Нет аналитики или отслеживания",
-          "Данные не покидают ваше устройство",
-          "Полностью офлайн работа",
+          "Нет рекламы, рекламных идентификаторов и отслеживания между приложениями",
+          "Ваши фотографии и все личные данные не покидают устройство",
+          "Наружу уходит только анонимная статистика использования, описанная ниже",
+        ],
+      },
+      analytics: {
+        title: "Анонимная статистика",
+        content:
+          "Чтобы понимать, пользуются ли приложением, мы считаем два события: запуск приложения и факт съёмки селфи — с пометкой, сделано оно по будильнику или вручную.",
+        subtitle: "Что уходит и что не уходит:",
+        list: [
+          "Уходит: название события, версия приложения, платформа и случайный идентификатор установки",
+          "Идентификатор создаётся при первом запуске, хранится в настройках приложения и исчезает вместе с приложением при удалении",
+          "Это не IDFA и не идентификатор поставщика: он не связывает вас с другими нашими приложениями и не используется для отслеживания",
+          "Не уходит: сами фотографии, данные о лице, время съёмки, содержимое галереи, местоположение, контакты",
+          "События приходят на наш собственный сервер analytics.superduperai.co и не передаются третьим лицам",
+          "Если сети нет, событие просто теряется — повторных попыток не будет",
         ],
       },
       faceDetection: {
@@ -62,7 +76,7 @@ const translations = {
       },
       thirdParty: {
         title: "Сторонние сервисы",
-        content: "FaceAlarm не интегрируется со сторонними сервисами, которые собирают данные пользователей.",
+        content: "FaceAlarm не использует стороннюю аналитику, рекламу и брокеров данных. Единственный сетевой адрес — наш собственный сервер для анонимного счётчика, описанного выше.",
       },
       dataRetention: {
         title: "Хранение данных",
@@ -98,7 +112,7 @@ const translations = {
   },
   en: {
     title: "Privacy Policy",
-    lastUpdated: "Last Updated: February 2, 2026",
+    lastUpdated: "Last Updated: August 22, 2026",
     sections: {
       overview: {
         title: "Overview",
@@ -107,14 +121,28 @@ const translations = {
       },
       dataCollection: {
         title: "Data Collection",
-        subtitle: "We do not collect any personal data.",
+        subtitle: "We do not collect personal data.",
         content: "FaceAlarm is built with privacy as a core principle:",
         list: [
           "No registration or account creation required",
           "No cloud storage or synchronization",
-          "No analytics or tracking",
-          "Data never leaves your device",
-          "Fully offline operation",
+          "No advertising, no advertising identifiers, no cross-app tracking",
+          "Your photos and everything personal stay on your device",
+          "The only thing that leaves it is the anonymous usage count described below",
+        ],
+      },
+      analytics: {
+        title: "Anonymous Usage Count",
+        content:
+          "To know whether the app is used at all, we count two things: that the app was opened, and that a selfie was taken — with a note of whether the alarm or the person started it.",
+        subtitle: "What is sent, and what is not:",
+        list: [
+          "Sent: the event name, the app version, the platform and a random install identifier",
+          "The identifier is created on first launch, kept in the app's own settings, and disappears with the app when you delete it",
+          "It is not the IDFA and not the vendor identifier: it does not join you across our other apps and is not used for tracking",
+          "Not sent: the photos themselves, face data, capture times, gallery contents, location, contacts",
+          "Events reach our own server at analytics.superduperai.co and are not shared with third parties",
+          "If the network is unavailable the event is simply lost — nothing is retried",
         ],
       },
       faceDetection: {
@@ -157,7 +185,7 @@ const translations = {
       },
       thirdParty: {
         title: "Third-Party Services",
-        content: "FaceAlarm does not integrate with third-party services that collect user data.",
+        content: "FaceAlarm does not integrate with third-party analytics, advertising or data brokers. The only network destination is our own server, for the anonymous count described above.",
       },
       dataRetention: {
         title: "Data Storage",
@@ -193,7 +221,7 @@ const translations = {
   },
   tr: {
     title: "Gizlilik Politikası",
-    lastUpdated: "Son güncelleme: 2 Şubat 2026",
+    lastUpdated: "Son güncelleme: 22 Ağustos 2026",
     sections: {
       overview: {
         title: "Genel Bakış",
@@ -202,7 +230,7 @@ const translations = {
       },
       dataCollection: {
         title: "Veri Toplama",
-        subtitle: "Hiçbir kişisel veri toplamıyoruz.",
+        subtitle: "Kişisel veri toplamıyoruz.",
         content: "FaceAlarm, gizlilik temel ilke olarak tasarlanmıştır:",
         list: [
           "Kayıt veya hesap oluşturma gerekmez",
@@ -210,6 +238,20 @@ const translations = {
           "Analitik veya takip yok",
           "Veriler cihazınızdan asla ayrılmaz",
           "Tamamen çevrimdışı çalışma",
+        ],
+      },
+      analytics: {
+        title: "Anonim Kullanım Sayacı",
+        content:
+          "Uygulamanın gerçekten kullanılıp kullanılmadığını bilmek için iki şeyi sayıyoruz: uygulamanın açılması ve bir selfie çekilmesi — alarmla mı yoksa kendi isteğinizle mi çekildiği notuyla.",
+        subtitle: "Gönderilenler ve gönderilmeyenler:",
+        list: [
+          "Gönderilir: olayın adı, uygulama sürümü, platform ve rastgele bir kurulum kimliği",
+          "Bu kimlik ilk açılışta oluşturulur, uygulamanın kendi ayarlarında tutulur ve uygulamayı sildiğinizde onunla birlikte kaybolur",
+          "IDFA değildir, sağlayıcı kimliği de değildir: sizi diğer uygulamalarımızla ilişkilendirmez ve takip için kullanılmaz",
+          "Gönderilmez: fotoğrafların kendisi, yüz verisi, çekim zamanları, galeri içeriği, konum, kişiler",
+          "Olaylar kendi sunucumuza (analytics.superduperai.co) ulaşır ve üçüncü taraflarla paylaşılmaz",
+          "Ağ yoksa olay kaybolur — yeniden denenmez",
         ],
       },
       faceDetection: {
